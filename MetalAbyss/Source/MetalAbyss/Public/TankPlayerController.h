@@ -8,8 +8,8 @@
 #include "TankPlayerController.generated.h"
 
 /**
- * 
- */
+*
+*/
 UCLASS()
 class METALABYSS_API ATankPlayerController : public APlayerController
 {
@@ -20,8 +20,8 @@ public:
 
 private:
 
-	ATank* GetControlledTank() const;
-	
+	ATank * GetControlledTank() const;
+
 	// Makes the tank start moving the barrel so that the shot would hit where
 	// the crosshair intersects the world
 	void AimTowardsCrosshair();
