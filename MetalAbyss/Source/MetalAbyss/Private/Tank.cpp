@@ -4,6 +4,7 @@
 #include "CoreMinimal.h"
 
 
+
 // Sets default values
 ATank::ATank()
 {
@@ -37,4 +38,9 @@ void ATank::AimAt(FVector HitLocation)
 {
 	TankAimingComponent->AimAt(HitLocation);
 
+}
+
+void ATank::SetBarrelReference(UStaticMeshComponent * BarrelToSet)
+{
+	TankAimingComponent->SetBarrelReference(BarrelToSet);
 }
