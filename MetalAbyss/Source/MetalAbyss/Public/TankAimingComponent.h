@@ -2,6 +2,7 @@
 
 #pragma once
 class UTankBarrel;
+class UTankTurret;
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
 #include "TankAimingComponent.generated.h"
@@ -22,7 +23,7 @@ public:
 	UTankAimingComponent();
 
 	void SetBarrelReference(UTankBarrel* BarrelToSet);
-
+	void SetTurretReference(UTankTurret* TurretToSet);
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
@@ -30,4 +31,5 @@ public:
 	void MoveBarrelTowards(FVector AimDirection);
 private:
 	UTankBarrel * Barrel = nullptr;
+	UTankTurret * Turret = nullptr;
 };

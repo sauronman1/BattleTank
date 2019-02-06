@@ -3,6 +3,7 @@
 #pragma once
 class UTankBarrel;
 class UTankAimingComponent;
+class UTankTurret;
 #include "CoreMinimal.h"
 #include "GameFramework/Pawn.h"
 #include "Tank.generated.h"
@@ -19,7 +20,8 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = setup)
 		void SetBarrelReference(UTankBarrel* BarrelToSet);
-
+	UFUNCTION(BlueprintCallable, Category = setup)
+		void SetTurretReference(UTankTurret* TurretToSet);
 	
 
 protected:
