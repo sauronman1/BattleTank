@@ -7,15 +7,7 @@
 void ATankPlayerController::BeginPlay()
 {
 	Super::BeginPlay();
-	UE_LOG(LogTemp, Warning, TEXT("PlayerController begins task"));
-	ATank* Tank = GetControlledTank();
-	if (!Tank)
-	{
-		UE_LOG(LogTemp, Warning, TEXT("Player has not possessed a %s"), *Tank->GetName());
-	}
-	else {
-		UE_LOG(LogTemp, Warning, TEXT("Player has possessed a %s"), *Tank->GetName());
-	}
+	
 }
 
 void ATankPlayerController::Tick(float DeltaTime)

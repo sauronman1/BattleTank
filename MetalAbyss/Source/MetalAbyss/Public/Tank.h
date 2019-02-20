@@ -3,6 +3,7 @@
 #pragma once
 class UTankBarrel;
 class UTankAimingComponent;
+class UTankMovementComponent;
 class UTankTurret;
 class AProjectile;
 #include "CoreMinimal.h"
@@ -28,6 +29,8 @@ public:
 
 protected:
 	 UTankAimingComponent * TankAimingComponent = nullptr;
+	 UPROPERTY(BlueprintReadOnly)
+		 UTankMovementComponent* TankMovementComponent = nullptr;
 	
 private:
 	// Sets default values for this pawn's properties
