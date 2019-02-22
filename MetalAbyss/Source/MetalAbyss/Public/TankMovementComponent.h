@@ -15,14 +15,16 @@ class METALABYSS_API UTankMovementComponent : public UNavMovementComponent
 	GENERATED_BODY()
 
 public:
-	UFUNCTION(BlueprintCallable, Category = input)
+	UFUNCTION(BlueprintCallable, Category = "Setup")
 		void IntendMoveForward(float Throw);
-	UFUNCTION(BlueprintCallable, Category = input)
+	UFUNCTION(BlueprintCallable, Category = "input")
 		void IntendTurnRight(float Throw);
-	UFUNCTION(BlueprintCallable, Category = Input)
+	UFUNCTION(BlueprintCallable, Category = "Input")
 		void Initialise(UTankTrack* LeftTrackToSet, UTankTrack* RightTrackToSet);
 private:
 	UTankTrack* LeftTrack = nullptr;
 	UTankTrack* RightTrack = nullptr;
+
+	// Called from the pathfinding logic by the AI controllers
 	virtual void RequestDirectMove(const FVector& MoveVelocity, bool bForceMaxSpeed) override;
 };
