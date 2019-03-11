@@ -20,10 +20,6 @@ public:
 	void AimAt(FVector HitLocation);
 	
 
-	UFUNCTION(BlueprintCallable, Category = setup)
-		void SetBarrelReference(UTankBarrel* BarrelToSet);
-	UFUNCTION(BlueprintCallable, Category = setup)
-		void SetTurretReference(UTankTurret* TurretToSet);
 	UFUNCTION(BlueprintCallable, Category = firing)
 		void Fire();
 
@@ -37,12 +33,10 @@ private:
 	// Sets default values for this pawn's properties
 	ATank();
 
-
-	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+	// Called when the game starts or when spawned
 
 	// Called to bind functionality to input
-	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 	UPROPERTY(EditDefaultsOnly, Category = Firing)
 		float LaunchSpeed = 100000; // Good value to begin with, 1000 m/s
