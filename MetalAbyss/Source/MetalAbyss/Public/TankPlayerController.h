@@ -2,6 +2,7 @@
 
 #pragma once
 class ATank;
+class UTankAimingComponent;
 #include "CoreMinimal.h"
 #include "GameFramework/PlayerController.h"
 #include "TankPlayerController.generated.h"
@@ -20,7 +21,8 @@ public:
 protected:
 	UFUNCTION(BlueprintCallable, Category = "Setup")
 		ATank * GetControlledTank() const;
-
+	UFUNCTION(BlueprintImplementableEvent, Category = "Setup")
+		void FoundAimingComponent(UTankAimingComponent* AimCompRef);
 private:
 	
 

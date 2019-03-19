@@ -3,7 +3,6 @@
 #include "Tank.h"
 #include "CoreMinimal.h"
 #include "TankAimingComponent.h"
-#include "TankMovementComponent.h"
 #include "TankBarrel.h"
 #include "Projectile.h"
 #include "Engine/World.h"
@@ -26,6 +25,7 @@ void ATank::BeginPlay()
 	Super::BeginPlay();
 	auto TankName = GetName();
 	UE_LOG(LogTemp, Warning, TEXT("%s DONKEY: Tank C++ Begin Play"), *TankName);
+	TankAimingComponent = FindComponentByClass<UTankAimingComponent>();
 }
 
 // Called every frame

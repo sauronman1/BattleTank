@@ -24,7 +24,7 @@ protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;
 	UPROPERTY(BlueprintReadOnly, Category = "State")
-		EFiringState FiringState = EFiringState::Barrel_Aiming;
+		EFiringState FiringState = EFiringState::Barrel_Locked;
 public:
 	// Sets default values for this component's properties
 
