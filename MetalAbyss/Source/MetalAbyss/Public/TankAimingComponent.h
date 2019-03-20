@@ -3,6 +3,7 @@
 #pragma once
 class UTankBarrel;
 class UTankTurret;
+class AProjectile;
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
 #include "TankAimingComponent.generated.h"
@@ -30,14 +31,23 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "Setup")
 		void Initialise(UTankBarrel* BarrelToSet, UTankTurret* TurretToSet);
-	// Called every frame
-	void AimAt(FVector HitLocation, float LaunchSpeed);
+	UFUNCTION(BlueprintCallable, Category = firing)
+		void Fire();
+	void AimAt(FVector HitLocation);
+	
 	
 private:
 
 	UTankAimingComponent();
+	void MoveBarrelTowards(FVector AimDirection);
+	UPROPERTY(EditDefaultsOnly, Category = Firing)
+		float LaunchSpeed = 100000; // Good value to begin with, 1000 m/s
+	UPROPERTY(EditDefaultsOnly, Category = Firing)
+		float ReloadTimeInSeconds = 3;
+	UPROPERTY(EditDefaultsOnly, Category = Firing)
+		TSubclassOf<AProjectile> ProjectileBlueprint;
 
 	UTankBarrel * Barrel = nullptr;
 	UTankTurret * Turret = nullptr;
-	void MoveBarrelTowards(FVector AimDirection);
+	double LastFireTime = 0;
 };
