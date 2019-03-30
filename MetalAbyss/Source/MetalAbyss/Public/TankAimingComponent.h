@@ -23,9 +23,8 @@ class METALABYSS_API UTankAimingComponent : public UActorComponent
 
 protected:
 	// Called when the game starts
-	virtual void BeginPlay() override;
 	UPROPERTY(BlueprintReadOnly, Category = "State")
-		EFiringState FiringState = EFiringState::Barrel_Locked;
+		EFiringState FiringState = EFiringState::Barrel_Reloading;
 public:
 	// Sets default values for this component's properties
 
@@ -34,10 +33,13 @@ public:
 	UFUNCTION(BlueprintCallable, Category = firing)
 		void Fire();
 	void AimAt(FVector HitLocation);
+	bool IsBarrelMoving();
 	
 	
 private:
-
+	virtual void BeginPlay() override;
+	virtual void TickComponent(float DeltaTime, enum ELevelTick TickType, FActorComponentTickFunction *ThisTickFunction) override;
+	FVector SavedAimDirection;
 	UTankAimingComponent();
 	void MoveBarrelTowards(FVector AimDirection);
 	UPROPERTY(EditDefaultsOnly, Category = Firing)
