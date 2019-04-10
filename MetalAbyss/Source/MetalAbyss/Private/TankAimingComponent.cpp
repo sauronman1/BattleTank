@@ -50,7 +50,6 @@ void UTankAimingComponent::TickComponent(float DeltaTime, enum ELevelTick TickTy
 	{
 		FiringState = EFiringState::Barrel_Locked;
 	}
-	UE_LOG(LogTemp, Warning, TEXT("value is %s"), (IsBarrelMoving() ? TEXT("True") : TEXT("False")));
 }
 
 
