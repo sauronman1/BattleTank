@@ -16,6 +16,14 @@ enum class EFiringState :uint8
 	Barrel_Locked
 };
 
+UENUM()
+enum class EAmmoState :uint8
+{
+	Loaded,
+	Out_Of_Ammo
+};
+
+
 UCLASS(ClassGroup = (Custom), meta = (BlueprintSpawnableComponent))
 class METALABYSS_API UTankAimingComponent : public UActorComponent
 {
@@ -25,6 +33,8 @@ protected:
 	// Called when the game starts
 	UPROPERTY(BlueprintReadOnly, Category = "State")
 		EFiringState FiringState = EFiringState::Barrel_Reloading;
+	UPROPERTY(BlueprintReadOnly, Category = "State")
+		EAmmoState AmmoState = EAmmoState::Loaded;
 public:
 	// Sets default values for this component's properties
 
@@ -32,9 +42,12 @@ public:
 		void Initialise(UTankBarrel* BarrelToSet, UTankTurret* TurretToSet);
 	UFUNCTION(BlueprintCallable, Category = firing)
 		void Fire();
+	UFUNCTION(BlueprintCallable, Category = firing)
+		int GetAmmo() const;
 	void AimAt(FVector HitLocation);
 	bool IsBarrelMoving();
-	
+	EFiringState GetFiringState() const;
+	EAmmoState GetAmmoState() const;
 	
 private:
 	virtual void BeginPlay() override;
@@ -45,11 +58,13 @@ private:
 	UPROPERTY(EditDefaultsOnly, Category = Firing)
 		float LaunchSpeed = 100000; // Good value to begin with, 1000 m/s
 	UPROPERTY(EditDefaultsOnly, Category = Firing)
+		int ammo = 10;
+	UPROPERTY(EditDefaultsOnly, Category = Firing)
 		float ReloadTimeInSeconds = 3;
 	UPROPERTY(EditDefaultsOnly, Category = Firing)
 		TSubclassOf<AProjectile> ProjectileBlueprint;
-
 	UTankBarrel * Barrel = nullptr;
 	UTankTurret * Turret = nullptr;
 	double LastFireTime = 0;
+	
 };

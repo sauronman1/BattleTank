@@ -12,11 +12,16 @@ UCLASS()
 class METALABYSS_API ATankAIController : public AAIController
 {
 	GENERATED_BODY()
+
+protected:
+	//Put in protected because blueprint class is child to this C++ class
+	UPROPERTY(EditAnywhere, Category = "Setup")
+		float AcceptanceRadius = 8000; // 80 metres
+	
 private:
 
 	virtual void BeginPlay() override;
 	virtual void Tick(float DeltaTime) override;
-	float AcceptanceRadius = 3000;
-public:
+	
 
 };
