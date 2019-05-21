@@ -6,6 +6,11 @@
 
 
 
+float ATank::GetHealthPercent() const
+{
+	return (float)CurrentHealth / (float)StartingHealth;
+}
+
 // Sets default values
 ATank::ATank()
 {
@@ -23,6 +28,7 @@ float ATank::TakeDamage(float DamageAmount, struct FDamageEvent const & DamageEv
 	CurrentHealth -= DamageToApply;
 	if (CurrentHealth <= 0) 
 	{
+		OnDeath.Broadcast();
 		UE_LOG(LogTemp, Warning, TEXT("Tank died!"));
 	}
 	return DamageToApply;
