@@ -21,6 +21,7 @@ public:
 	FTankDelegate OnDeath;
 private:
 	ATank();
+	virtual void BeginPlay() override;
 	UPROPERTY(EditDefaultsOnly, Category = "Setup")
 		int32 StartingHealth = 100;
 
